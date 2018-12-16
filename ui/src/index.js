@@ -1,20 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
+import React, { Suspense } from 'react';
+import { render } from 'react-dom';
 import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
+import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
+import Users from './users'
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_URI
+  uri: "http://mycompany-api.local.com/"
 });
 
-const Main = () => (
+const App = () => (
   <ApolloProvider client={client}>
-    <App />
+    <ApolloHooksProvider client={client}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Users />
+      </Suspense>
+   </ApolloHooksProvider>
   </ApolloProvider>
 );
 
-ReactDOM.render(<Main />, document.getElementById("root"));
-registerServiceWorker();
+render(<App />, document.getElementById('root'));
