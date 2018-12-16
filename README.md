@@ -6,28 +6,77 @@ This project is a starter for building a [GRANDstack](https://grandstack.io) (Gr
 
 ## Quickstart
 
+### Docker Building images
+
+#### Neo4J image
+`docker build -t registry-mycompany-neo4j registry-mycompany/neo4j`
+
+>   neo4j:3.5 \
+    APOC_VERSION 3.5.0.1 \
+    GRAPHQL_VERSION 3.5.0.1
+
+>   **WARNING**
+    \
+    \
+    This image has a peculiarity \
+    \
+    **ENV NEO4J_AUTH=neo4j/letmein** \
+    \
+    This means the password for neo4j is already 'letmein' \
+    I **strongly** recommend you to change this! \
+    and then change the variable NEO4J_PASSWORD \
+    in the api container at docker-compose.yml
+
+
+#### NodeJS image
+`docker build -t registry-mycompany-neo4j registry-mycompany/neo4j`
+
+>   NODE_VERSION 10.14.2 \
+    YARN_VERSION 1.12.3 \
+    SO: debian:jessie-slim \
+    Final image size: 185MB
+
+
 ### Docker Compose
 
-To use docker-compose to quickly start please make the following changes
+`docker-compose up -d`
 
-api/.env:
+>   jwilder/nginx-proxy:latest \
+    api and ui use 80 port
+
+### Extra steps
+
+#### Changing your hosts (MAC AND LINUX)
+You need to go to your /etc/hosts file and put the lines below:
+
 ```
-NEO4J_URI=bolt://neo4j:7687
-NEO4J_USER=neo4j
-NEO4J_PASSWORD=letmein
-GRAPHQL_LISTEN_PORT=4000
-GRAPHQL_URI=http://api:4000
+127.0.0.1   mycompany-proxy.local.com \
+127.0.0.1   mycompany-neo4j.local.com \
+127.0.0.1   mycompany-api.local.com \
+127.0.0.1   mycompany-ui.local.com
 ```
 
-Now you can quickly start via:
-```
-docker-compose up -d
-```
+Now you can use the full address, and not the lame localhost:port
 
-If you want to load the example DB after the services have been started:
+#### Changing neo4j password:
+
+Go to: http://mycompany-neo4j.local.com:7474  
+In order to change the neo4j password  
+
 ```
-docker-compose run api npm run seedDb
-```
+Username: neo4j
+password: neo4j
+```  
+
+just create a new password and then change the variable  
+NEO4J_PASSWORD  
+in the api container at docker-compose.yml
+
+`docker-compose up -d`
+
+#### Seeding data into DB
+
+`docker exec -it mycompany-api.local.com yarn run seedDb`
 
 ### Neo4j
 
@@ -35,50 +84,12 @@ You need a Neo4j instance, e.g. a [Neo4j Sandbox](http://neo4j.com/sandbox), a l
 
 For schemas using the  `@cypher` directive (as in this repo) via [`neo4j-graphql-js`](https://github.com/neo4j-graphql/neo4j-graphql-js), you need to have the [APOC library](https://github.com/neo4j-contrib/neo4j-apoc-procedures) installed, which should be automatic in Sandbox, Cloud and is a single click install in Neo4j Desktop. If when using the Sandbox / cloud you encounter an issue where an error similar to `Can not be converted to long: org.neo4j.kernel.impl.core.NodeProxy, Location: [object Object], Path: users` appears in the console when running the React app, try installing and using Neo4j locally instead.
 
-#### Sandbox setup
-A good tutorial can be found here: https://www.youtube.com/watch?v=rPC71lUhK_I
+#### Sandbox 
 
-#### Local setup
-1. [Download Neo4j Desktop](https://neo4j.com/download/)
-2. Install and open Neo4j Desktop.
-3. Create a new DB by clicking "New Graph", and clicking "create local graph".
-4. Set password to "letmein" (as suggested by `api/.env`), and click "Create".
-5. Make sure that the default credentials in `api/.env` are used. Leave them as follows: `NEO4J_URI=bolt://localhost:7687 NEO4J_USER=neo4j NEO4J_PASSWORD=letmein`
-6.  Click "Manage".
-7. Click "Plugins".
-8. Find "APOC" and click "Install".
-9. Click the "play" button at the top of left the screen, which should start the server. _(screenshot 2)_
-10. Wait until it says "RUNNING".
-11. Proceed forward with the rest of the tutorial.
+A good, but old, tutorial can be found here: https://www.youtube.com/watch?v=rPC71lUhK_I
 
-### [`/api`](./api)
 
-*Install dependencies*
-
-```
-(cd ./ui && npm install)
-(cd ./api && npm install)
-```
-
-*Start API server*
-```
-cd ./api && npm start
-```
-
-![](api/img/graphql-playground.png)
-
-### [`/ui`](./ui)
-
-This will start the GraphQL API in the foreground, so in another terminal session start the UI development server:
-
-*Start UI server*
-```
-cd ./ui && npm start
-```
-
-![](ui/img/default-app.png)
-
-See [the project releases](https://github.com/grand-stack/grand-stack-starter/releases) for the changelog.
+See [the project releases](https://github.com/BrenoMazieiro/grand-stack-starter/releases) for the changelog.
 
 This project is licensed under the Apache License v2.
 Copyright (c) 2018 Neo4j, Inc.
