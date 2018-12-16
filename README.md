@@ -29,7 +29,7 @@ This project is a starter for building a [GRANDstack](https://grandstack.io) (Gr
 
 
 #### NodeJS image
-`docker build -t registry-mycompany-neo4j registry-mycompany/neo4j`
+`docker build -t registry-mycompany-nodejs registry-mycompany/nodejs`
 
 >   NODE_VERSION 10.14.2 \
     YARN_VERSION 1.12.3 \
