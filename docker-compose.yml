@@ -58,7 +58,7 @@ services:
     networks:
       main:
         aliases:
-          - mycompany-api.local.mycompany.com
+          - api.local.mycompany.com
 
   ui.local.mycompany.com:
     image: registry-mycompany-nodejs
