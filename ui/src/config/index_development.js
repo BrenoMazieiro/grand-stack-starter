@@ -1,0 +1,1 @@
+export const API = `http://api.local.mycompany.com/`;

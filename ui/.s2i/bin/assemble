@@ -24,6 +24,8 @@ if [ -f package.json ]; then
   fi
 fi
 
+cp src/config/index_${APP_ENV}.js src/config/index.js
+
 # When we are local, it is needed to go to deploy
 # but it is not needed when you are in a server like openshift.
 if [ $APP_ENV == 'development' ]; then
