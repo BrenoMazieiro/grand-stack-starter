@@ -1,1 +1,1 @@
-export const API = `http://mycompany-api.com`;
+export const API = `http://api.mycompany.com/`;

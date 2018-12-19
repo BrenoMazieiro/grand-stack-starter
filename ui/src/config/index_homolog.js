@@ -1,1 +1,1 @@
-export const API = `http://mycompany-api.homolog.com`;
+export const API = `http://api.homolog.mycompany.com/`;
