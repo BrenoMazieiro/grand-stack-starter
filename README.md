@@ -29,7 +29,7 @@ This project is a starter for building a [GRANDstack](https://grandstack.io) (Gr
 
 
 #### NodeJS image
-`docker build -t registry-mycompany-neo4j registry-mycompany/neo4j`
+`docker build -t registry-mycompany-nodejs registry-mycompany/nodejs`
 
 >   NODE_VERSION 10.14.2 \
     YARN_VERSION 1.12.3 \
@@ -50,17 +50,17 @@ This project is a starter for building a [GRANDstack](https://grandstack.io) (Gr
 You need to go to your /etc/hosts file and put the lines below:
 
 ```
-127.0.0.1   mycompany-proxy.local.com \
-127.0.0.1   mycompany-neo4j.local.com \
-127.0.0.1   mycompany-api.local.com \
-127.0.0.1   mycompany-ui.local.com
+127.0.0.1   proxy.local.mycompany.com  
+127.0.0.1   neo4j.local.mycompany.com  
+127.0.0.1   api.local.mycompany.com  
+127.0.0.1   ui.local.mycompany.com
 ```
 
 Now you can use the full address, and not the lame localhost:port
 
 #### Changing neo4j password:
 
-Go to: http://mycompany-neo4j.local.com:7474  
+Go to: http://neo4j.local.mycompany.com:7474  
 In order to change the neo4j password  
 
 ```

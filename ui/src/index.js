@@ -4,9 +4,10 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from 'react-apollo';
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import Users from './users'
+import { API } from './config'
 
 const client = new ApolloClient({
-  uri: "http://mycompany-api.local.com/"
+  uri: API,
 });
 
 const App = () => (
