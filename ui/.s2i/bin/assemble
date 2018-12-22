@@ -24,6 +24,7 @@ if [ -f package.json ]; then
   fi
 fi
 
+echo "### Coping ui config..."
 cp src/config/index_${APP_ENV}.js src/config/index.js
 
 # When we are local, it is needed to go to deploy

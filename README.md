@@ -4,13 +4,50 @@ This project is a starter for building a [GRANDstack](https://grandstack.io) (Gr
 
 [![Hands On With The GRANDstack Starter](http://img.youtube.com/vi/rPC71lUhK_I/0.jpg)](http://www.youtube.com/watch?v=rPC71lUhK_I "Hands On With The GRANDstack Starter")
 
-## Quickstart
+## Install
 
-### Docker Building images
+At the root project folder:  
+* First building neo4j image:  
+`docker build -t registry-mycompany-neo4j registry-mycompany/neo4j`  
+* Now nodejs image:  
+`docker build -t registry-mycompany-nodejs registry-mycompany/nodejs`  
+* Starting everything:  
+`docker-compose up -d`
+## Extra install steps:
+
+#### Changing your hosts (MAC AND LINUX) (MANDATORY)
+You need to go to your **/etc/hosts** file and add the lines below:  
+```
+127.0.0.1   proxy.local.mycompany.com  
+127.0.0.1   neo4j.local.mycompany.com  
+127.0.0.1   api.local.mycompany.com  
+127.0.0.1   ui.local.mycompany.com
+```  
+Now it will be possible to use a real full address, and not the old **'localhost:port'**
+
+#### Changing neo4j password: (OPTIONAL, but recommended)
+
+Go to: http://neo4j.local.mycompany.com:7474  
+In order to change the neo4j password  
+
+```
+Username: neo4j
+password: letmein
+```  
+type the command:  
+`:server change-password`
+
+just create a new password and then change the variable  
+NEO4J_PASSWORD  
+in the api container at docker-compose.yml
+
+#### Seeding data into DB (OPTIONAL)
+
+`docker exec -it mycompany-api.local.com yarn run seedDb`
+
+### The project specifications
 
 #### Neo4J image
-`docker build -t registry-mycompany-neo4j registry-mycompany/neo4j`
-
 >   neo4j:3.5 \
     APOC_VERSION 3.5.0.1 \
     GRAPHQL_VERSION 3.5.0.1
@@ -29,7 +66,6 @@ This project is a starter for building a [GRANDstack](https://grandstack.io) (Gr
 
 
 #### NodeJS image
-`docker build -t registry-mycompany-nodejs registry-mycompany/nodejs`
 
 >   NODE_VERSION 10.14.2 \
     YARN_VERSION 1.12.3 \
@@ -39,44 +75,8 @@ This project is a starter for building a [GRANDstack](https://grandstack.io) (Gr
 
 ### Docker Compose
 
-`docker-compose up -d`
-
 >   jwilder/nginx-proxy:latest \
     api and ui use 80 port
-
-### Extra steps
-
-#### Changing your hosts (MAC AND LINUX)
-You need to go to your /etc/hosts file and put the lines below:
-
-```
-127.0.0.1   proxy.local.mycompany.com  
-127.0.0.1   neo4j.local.mycompany.com  
-127.0.0.1   api.local.mycompany.com  
-127.0.0.1   ui.local.mycompany.com
-```
-
-Now you can use the full address, and not the lame localhost:port
-
-#### Changing neo4j password:
-
-Go to: http://neo4j.local.mycompany.com:7474  
-In order to change the neo4j password  
-
-```
-Username: neo4j
-password: neo4j
-```  
-
-just create a new password and then change the variable  
-NEO4J_PASSWORD  
-in the api container at docker-compose.yml
-
-`docker-compose up -d`
-
-#### Seeding data into DB
-
-`docker exec -it mycompany-api.local.com yarn run seedDb`
 
 ### Neo4j
 
