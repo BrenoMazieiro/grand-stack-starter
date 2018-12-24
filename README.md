@@ -43,7 +43,7 @@ in the api container at docker-compose.yml
 
 #### Seeding data into DB (OPTIONAL)
 
-`docker exec -it mycompany-api.local.com yarn run seedDb`
+`docker exec -it api.local.mycompany.com yarn run seedDb`
 
 ### The project specifications
 
