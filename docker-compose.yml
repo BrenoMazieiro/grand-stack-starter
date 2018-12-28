@@ -48,7 +48,7 @@ services:
       VIRTUAL_HOST: 'api.local.mycompany.com'
       VIRTUAL_PORT: 80
       GRAPHQL_LISTEN_PORT: 80
-      GRAPHQL_URI: 'http://api.local.mycompany.com'
+      GRAPHQL_URI: 'http://api.local.mycompany.com/'
       JWT_SECRET: 'mysupersecretjwt'
       APP_ENV: 'development'
       NODE_ENV: 'development'
