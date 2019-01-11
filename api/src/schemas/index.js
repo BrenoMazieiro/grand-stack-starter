@@ -1,7 +1,7 @@
 import { makeAugmentedSchema } from "neo4j-graphql-js"
-import { typeDefs } from "./typeDefs"
-import { resolvers } from "./resolvers"
-import { schemaDirectives } from "./directives"
+import { typeDefs } from "./Domains/MyDomain/typeDefs"
+import { resolvers } from "./Domains/MyDomain/resolvers"
+import { schemaDirectives } from "./Domains/MyDomain/Directives"
 
 /*
  * Create an executable GraphQL schema object from GraphQL type definitions
@@ -14,5 +14,9 @@ import { schemaDirectives } from "./directives"
 export const schema = makeAugmentedSchema({
     typeDefs,
     resolvers,
-    schemaDirectives
+    schemaDirectives,
+    config: {
+      query: false, //default
+      mutation: false
+    }
   })

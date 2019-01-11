@@ -14,7 +14,13 @@ const server = new ApolloServer({
     const token = req.headers.authorization || ''
    
     // try to retrieve a user with the token
-    const user = {id: 'asdasdasd'}
+    // TODO:  GET USER BY TOKEN
+    const user = {
+      id: '1',
+      name: 'Breno Mazieiro',
+      email: 'breno.mazieiro@gmail.com',
+      role: ['ADMIN']
+    }
     if(user) {
       // add the user and driver to the context
       return { user, driver }
