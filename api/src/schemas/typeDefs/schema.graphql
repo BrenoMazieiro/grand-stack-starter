@@ -5,15 +5,17 @@ type Phone {
   phone_country: String!
   phone_number: String!
   pincode: String! @hideTheField
+  validated: Boolean
   user: User @relation(name: "WROTE", direction: "IN")
 }
 
 type User {
-  id: String!
+  id: String
   name: String!
   email: String!
   password: String! @hideTheField
-  token: String!
+  token: String
+  roles: [Roles] @relation(name: "IS_A", direction: "OUT")
   phones: [Phone] @relation(name: "HAS_PHONE", direction: "OUT")
   friends: [User] @relation(name: "FRIENDS", direction: "BOTH")
   reviews: [Review] @relation(name: "WROTE", direction: "OUT")
@@ -23,6 +25,9 @@ type User {
     )
   numReviews: Int
     @cypher(statement: "MATCH (this)-[:WROTE]->(r:Review) RETURN COUNT(r)")
+}
+type Roles {
+  type: String!
 }
 
 type Business {
@@ -58,6 +63,13 @@ type Query {
 
 type Mutation {
   CreateUser (
+    searchUserInput: searchUserInput
+    updateUserInput: updateUserInput
+  ): User
+    @cypher(
+      statement: "MERGE (u:User {email: $searchUserInput.email}) ON CREATE SET u.id = apoc.create.uuid(), u.name = $updateUserInput.name, u.email = $updateUserInput.email, u.password = $updateUserInput.password ON MATCH SET u.name = $updateUserInput.name, u.password = $updateUserInput.password RETURN u"
+    )
+  MergeUser (
     searchUserInput: searchUserInput
     updateUserInput: updateUserInput
   ): User
