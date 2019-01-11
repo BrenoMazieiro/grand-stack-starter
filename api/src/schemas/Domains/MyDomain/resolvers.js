@@ -1,6 +1,7 @@
 import { neo4jgraphql } from "neo4j-graphql-js";
-import CreateUser from './use_case/CreateUser'
-import MergeUser from './use_case/MergeUser'
+import CreateUser from './User/UseCases/CreateUser'
+import MergeUser from './User/UseCases/MergeUser'
+import CreatePhone from './Phone/UseCases/CreatePhone'
 
 export const resolvers = {
   Query: {
@@ -9,6 +10,6 @@ export const resolvers = {
   Mutation: {
     CreateUser,
     MergeUser,
-    CreatePhone: neo4jgraphql
+    CreatePhone
   }
 };
