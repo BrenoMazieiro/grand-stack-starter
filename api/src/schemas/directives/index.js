@@ -1,5 +1,5 @@
-import hideTheFieldDirective from "./hideTheFieldDirective"
+import HideTheFieldDirective from "./HideTheFieldDirective"
 
 export const schemaDirectives = {
-  hideTheField: hideTheFieldDirective
+  hideTheField: HideTheFieldDirective,
 }
