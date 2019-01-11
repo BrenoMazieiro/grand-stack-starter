@@ -1,6 +1,6 @@
 import { directives } from './Directives'
 import { Phone, CreatePhone, PhoneInputs } from './Phone/schema'
-import { User, UsersBySubstring, CreateUser, MergeUser, UserInputs } from './User/schema'
+import { User, UsersByFirstName, CreateUser, MergeUser, UserInputs } from './User/schema'
 import { Role } from './Role/schema'
 
 export const typeDefs = `
@@ -11,7 +11,7 @@ ${User}
 ${Role}
 
 type Query {
-  ${UsersBySubstring}
+  ${UsersByFirstName}
 }
 
 type Mutation {
