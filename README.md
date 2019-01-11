@@ -85,7 +85,7 @@ Someday it will be like this:
 ### Neo4j
 
 You need a Neo4j instance:  
- **There is one already in this project for local pourposes**  
+ **There is one already in this project for local purposes**  
  
  But in production you will need some:
  - [Neo4j instance on AWS, Azure or GCP](http://neo4j.com/developer/guide-cloud-deployment)
