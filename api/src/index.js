@@ -18,7 +18,8 @@ const server = new ApolloServer({
     const user = {
       id: '1',
       name: 'Breno Mazieiro',
-      email: 'breno.mazieiro@gmail.com'
+      email: 'breno.mazieiro@gmail.com',
+      role: ['ADMIN']
     }
     if(user) {
       // add the user and driver to the context
