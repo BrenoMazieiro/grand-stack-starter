@@ -1,6 +1,6 @@
 import { SchemaDirectiveVisitor } from 'graphql-tools'
 
-class hideTheFieldDirective extends SchemaDirectiveVisitor {
+class HideTheFieldDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition (field) {
     field.resolve = async (...args) => 'This is secret! ;)'
   }
@@ -12,4 +12,4 @@ class hideTheFieldDirective extends SchemaDirectiveVisitor {
   }
 }
 
-export default hideTheFieldDirective
+export default HideTheFieldDirective
