@@ -5,7 +5,7 @@ import CreatePhone from './Phone/UseCases/CreatePhone'
 
 export const resolvers = {
   Query: {
-    usersBySubstring: neo4jgraphql
+    UsersByFirstName: neo4jgraphql
   },
   Mutation: {
     CreateUser,

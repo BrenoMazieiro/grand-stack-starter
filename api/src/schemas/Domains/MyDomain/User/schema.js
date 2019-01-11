@@ -13,10 +13,10 @@ type User {
   }
 `
 /* Queries */
-export const UsersBySubstring = `
-  usersBySubstring(substring: String): [User]
+export const UsersByFirstName = `
+  UsersByFirstName(substring: String): [User]
     @cypher(
-      statement: "MATCH (u:User) WHERE u.name CONTAINS $substring RETURN u"
+      statement: "MATCH (u:User) WHERE u.first_name CONTAINS $substring RETURN u"
     )
 `
 
@@ -27,7 +27,8 @@ export const CreateUser = `
     updateUserInput: updateUserInput
   ): User
     @cypher(
-      statement: "MERGE (u:User {email: $searchUserInput.email}) ON CREATE SET u.id = apoc.create.uuid(), u.name = $updateUserInput.name, u.email = $updateUserInput.email, u.password = $updateUserInput.password ON MATCH SET u.name = $updateUserInput.name, u.password = $updateUserInput.password RETURN u"
+      statement: 
+        "MERGE (u:User {email: $searchUserInput.email}) ON CREATE SET u.id = apoc.create.uuid(), u.first_name = $updateUserInput.first_name, u.last_name = $updateUserInput.last_name, u.email = $updateUserInput.email, u.password = $updateUserInput.password ON MATCH SET u.first_name = $updateUserInput.first_name, u.last_name = $updateUserInput.last_name, u.password = $updateUserInput.password RETURN u"
     )
 `
 
@@ -37,7 +38,8 @@ export const MergeUser = `
     updateUserInput: updateUserInput
   ): User
     @cypher(
-      statement: "MERGE (u:User {email: $searchUserInput.email}) ON CREATE SET u.id = apoc.create.uuid(), u.name = $updateUserInput.name, u.email = $updateUserInput.email, u.password = $updateUserInput.password ON MATCH SET u.name = $updateUserInput.name, u.password = $updateUserInput.password RETURN u"
+      statement: 
+        "MERGE (u:User {email: $searchUserInput.email}) ON CREATE SET u.id = apoc.create.uuid(), u.first_name = $updateUserInput.first_name, u.last_name = $updateUserInput.last_name, u.email = $updateUserInput.email, u.password = $updateUserInput.password ON MATCH SET u.first_name = $updateUserInput.first_name, u.last_name = $updateUserInput.last_name, u.password = $updateUserInput.password RETURN u"
     )
 `
 export const UserInputs = `
