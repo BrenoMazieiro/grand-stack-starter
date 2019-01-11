@@ -14,5 +14,9 @@ import { schemaDirectives } from "./directives"
 export const schema = makeAugmentedSchema({
     typeDefs,
     resolvers,
-    schemaDirectives
+    schemaDirectives,
+    config: {
+      query: false, //default
+      mutation: false
+    }
   })
