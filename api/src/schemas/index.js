@@ -12,11 +12,11 @@ import { schemaDirectives } from "./Domains/MyDomain/Directives"
  */
 
 export const schema = makeAugmentedSchema({
-    typeDefs,
-    resolvers,
-    schemaDirectives,
-    config: {
-      query: false, //default
-      mutation: false
-    }
-  })
+  typeDefs,
+  resolvers,
+  schemaDirectives,
+  config: {
+    query: false, //default
+    mutation: false
+  }
+})
