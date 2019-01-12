@@ -2,9 +2,11 @@ import gql from 'graphql-tag';
 import React from 'react';
 import { useQuery } from 'react-apollo-hooks';
 
+let firstName = 'B'
+
 const GET_USERS = gql`
 {
-  UsersByFirstName(substring: "") {
+  UsersByFirstName(substring: "${firstName}") {
     id
     first_name
     last_name
@@ -20,6 +22,7 @@ const Users = () => {
   
   if(data.UsersByFirstName.length > 0) {
     return (
+      <div>
         <ul>
           {
             data.UsersByFirstName.map(user => (
@@ -31,6 +34,7 @@ const Users = () => {
             ))
           }
         </ul>
+      </div>
     );
   } else {
     return (
