@@ -28,7 +28,18 @@ export const CreateUser = `
   ): User
     @cypher(
       statement: 
-        "MERGE (u:User {email: $searchUserInput.email}) ON CREATE SET u.id = apoc.create.uuid(), u.first_name = $updateUserInput.first_name, u.last_name = $updateUserInput.last_name, u.email = $updateUserInput.email, u.password = $updateUserInput.password ON MATCH SET u.first_name = $updateUserInput.first_name, u.last_name = $updateUserInput.last_name, u.password = $updateUserInput.password RETURN u"
+        "MERGE (u:User {email: $searchUserInput.email}) \
+        ON CREATE SET \
+          u.id = apoc.create.uuid(), \
+          u.first_name = $updateUserInput.first_name, \
+          u.last_name = $updateUserInput.last_name, \
+          u.email = $searchUserInput.email, \
+          u.password = $updateUserInput.password \
+        ON MATCH SET \
+          u.first_name = $updateUserInput.first_name, \
+          u.last_name = $updateUserInput.last_name, \
+          u.password = $updateUserInput.password \
+        RETURN u"
     )
 `
 
@@ -39,7 +50,18 @@ export const MergeUser = `
   ): User
     @cypher(
       statement: 
-        "MERGE (u:User {email: $searchUserInput.email}) ON CREATE SET u.id = apoc.create.uuid(), u.first_name = $updateUserInput.first_name, u.last_name = $updateUserInput.last_name, u.email = $updateUserInput.email, u.password = $updateUserInput.password ON MATCH SET u.first_name = $updateUserInput.first_name, u.last_name = $updateUserInput.last_name, u.password = $updateUserInput.password RETURN u"
+        "MERGE (u:User {email: $searchUserInput.email}) \
+        ON CREATE SET \
+          u.id = apoc.create.uuid(), \
+          u.first_name = $updateUserInput.first_name, \
+          u.last_name = $updateUserInput.last_name, \
+          u.email = $searchUserInput.email, \
+          u.password = $updateUserInput.password \
+        ON MATCH SET \
+          u.first_name = $updateUserInput.first_name, \
+          u.last_name = $updateUserInput.last_name, \
+          u.password = $updateUserInput.password \
+        RETURN u"
     )
 `
 export const UserInputs = `
@@ -50,7 +72,6 @@ input searchUserInput {
 input updateUserInput {
   first_name: String!
   last_name: String!
-  email: String!
   password: String!
 }
 `

@@ -31,7 +31,7 @@ const server = new ApolloServer({
 
 server.init = function(){
   server.listen(process.env.GRAPHQL_LISTEN_PORT, "0.0.0.0").then(({ url }) => {
-    console.log('\x1b[36m%s\x1b[0m',`GraphQL API ready at ${url}`)
+    console.log('\x1b[36m%s\x1b[0m',`👍 GraphQL API ready at http://${process.env.VIRTUAL_HOST} 👍`)
   })
 }
 
