@@ -6,6 +6,9 @@ type User {
     last_name: String!
     email: String!
     password: String! @hideTheField
+    created: Date
+    updated: Date
+    softDeleted: Boolean
     token: String
     roles: [Role] @relation(name: "IS_A", direction: "OUT")
     phones: [Phone] @relation(name: "HAS_PHONE", direction: "OUT")
@@ -24,45 +27,51 @@ export const UsersByFirstName = `
 export const CreateUser = `
   CreateUser (
     searchUserInput: searchUserInput
-    updateUserInput: updateUserInput
+    dataUserInput: dataUserInput
   ): User
     @cypher(
       statement: 
         "MERGE (u:User {email: $searchUserInput.email}) \
         ON CREATE SET \
           u.id = apoc.create.uuid(), \
-          u.first_name = $updateUserInput.first_name, \
-          u.last_name = $updateUserInput.last_name, \
+          u.first_name = $dataUserInput.first_name, \
+          u.last_name = $dataUserInput.last_name, \
           u.email = $searchUserInput.email, \
-          u.password = $updateUserInput.password \
+          u.password = $dataUserInput.password, \
+          u.created = datetime(), \
+          u.softDeleted = false \
         ON MATCH SET \
-          u.first_name = $updateUserInput.first_name, \
-          u.last_name = $updateUserInput.last_name, \
-          u.password = $updateUserInput.password \
+          u.first_name = $dataUserInput.first_name, \
+          u.last_name = $dataUserInput.last_name, \
+          u.password = $dataUserInput.password, \
+          u.updated = datetime() \
         MERGE (r:Role {name: 'SUBSCRIBER'}) \
         CREATE (u)-[p:PLAYS]->(r) \
         RETURN u"
     )
 `
 
-export const MergeUser = `
-  MergeUser (
+export const UpdateUser = `
+  UpdateUser (
     searchUserInput: searchUserInput
-    updateUserInput: updateUserInput
+    dataUserInput: dataUserInput
   ): User
     @cypher(
       statement: 
         "MERGE (u:User {email: $searchUserInput.email}) \
         ON CREATE SET \
           u.id = apoc.create.uuid(), \
-          u.first_name = $updateUserInput.first_name, \
-          u.last_name = $updateUserInput.last_name, \
+          u.first_name = $dataUserInput.first_name, \
+          u.last_name = $dataUserInput.last_name, \
           u.email = $searchUserInput.email, \
-          u.password = $updateUserInput.password \
+          u.password = $dataUserInput.password, \
+          u.created = datetime(), \
+          u.softDeleted = false \
         ON MATCH SET \
-          u.first_name = $updateUserInput.first_name, \
-          u.last_name = $updateUserInput.last_name, \
-          u.password = $updateUserInput.password \
+          u.first_name = $dataUserInput.first_name, \
+          u.last_name = $dataUserInput.last_name, \
+          u.password = $dataUserInput.password, \
+          u.updated = datetime() \
         RETURN u"
     )
 `
@@ -71,7 +80,7 @@ input searchUserInput {
   email: String!
 }
 
-input updateUserInput {
+input dataUserInput {
   first_name: String!
   last_name: String!
   password: String!
