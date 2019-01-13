@@ -1,6 +1,6 @@
 import { directives } from './Directives'
 import { Phone, CreatePhone, PhoneInputs } from './Phone/schema'
-import { User, UsersByFirstName, CreateUser, MergeUser, UserInputs } from './User/schema'
+import { User, UsersByFirstName, CreateUser, UpdateUser, SoftDeleteUser, UserInputs } from './User/schema'
 import { Role } from './Role/schema'
 
 export const typeDefs = `
@@ -17,7 +17,8 @@ type Query {
 type Mutation {
   ${CreatePhone}
   ${CreateUser}
-  ${MergeUser}
+  ${UpdateUser}
+  ${SoftDeleteUser}
 }
 
 ${PhoneInputs}
