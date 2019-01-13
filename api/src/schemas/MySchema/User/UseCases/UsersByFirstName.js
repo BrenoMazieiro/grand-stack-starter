@@ -3,7 +3,6 @@ import { ApolloError } from "apollo-server"
 
 export default async (obj, params, ctx, resolveInfo) => {
   /* Only the user or those who are admin can delete */
-  console.log(ctx.user, ctx.user.role.includes('ADMIN'))
   if (ctx.user.role.includes('ADMIN')) {
     return neo4jgraphql(obj, params, ctx, resolveInfo, true)
   } else {
