@@ -14,12 +14,15 @@ type User {
     phones: [Phone] @relation(name: "HAS_PHONE", direction: "OUT")
     friends: [User] @relation(name: "FRIENDS", direction: "BOTH")
   }
+type DeletedUser {
+  deleted: Boolean
+}
 `
 /* Queries */
 export const UsersByFirstName = `
   UsersByFirstName(substring: String): [User]
     @cypher(
-      statement: "MATCH (u:User) WHERE u.first_name CONTAINS $substring RETURN u"
+      statement: "MATCH (u:User) WHERE u.first_name CONTAINS $substring and u.softDeleted=false RETURN u"
     )
 `
 
@@ -75,6 +78,18 @@ export const UpdateUser = `
         RETURN u"
     )
 `
+export const SoftDeleteUser = `
+  SoftDeleteUser (
+    searchUserInput: searchUserInput
+  ): DeletedUser
+    @cypher(
+      statement: 
+        "MATCH (u:User {email: $searchUserInput.email}) \
+        SET u.softDeleted = true \
+        RETURN {deleted: true}"
+    )
+`
+
 export const UserInputs = `
 input searchUserInput {
   email: String!
