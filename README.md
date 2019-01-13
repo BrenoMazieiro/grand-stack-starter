@@ -45,8 +45,6 @@ in the api container at docker-compose.yml file
 
 #### Seeding data into DB (OPTIONAL)
 
-Still in progress... not working right now :(  
-Someday it will be like this:  
 `docker exec -it api.local.mycompany.com yarn run seedDb`
 
 ## The project specifications

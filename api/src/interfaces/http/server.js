@@ -1,6 +1,9 @@
 import { ApolloServer } from "apollo-server"
+import { ApolloError } from "apollo-server"
 import { driver } from '../../infra/databases/database'
 import { schema } from '../../schemas'
+import jwt from 'jsonwebtoken'
+import { decode } from "punycode";
 /*
  * Create a new ApolloServer instance, serving the GraphQL schema
  * created using makeAugmentedSchema above and injecting the Neo4j driver
@@ -11,29 +14,36 @@ const server = new ApolloServer({
   context: ({ req }) => {
     // get the user token from the headers
     const token = req.headers.authorization
-    console.log(token)
-   
+    let user = false
+    let decoded = false
+
     // try to retrieve a user with the token
-    // TODO:  GET USER BY TOKEN
-    const user = {
-      id: '1',
-      name: 'Breno Mazieiro',
-      email: 'breno.mazieiro@gmail.com',
-      role: ['SUBSCRIBER']
+    if (token) {
+      try {
+        decoded = jwt.verify(token, process.env.JWT_SECRET)
+      } catch(e) {
+        throw new ApolloError('invalid_token', 401, ['User or password is incorrect']);
+      }
+      if (!decoded.id) {
+        throw new ApolloError('invalid_token', 401, ['User or password is incorrect']);
+      } else {
+        user = decoded
+      }
+    } else {
+      user = {
+        role: ['ANONYMOUS']
+      }
     }
-    if(user) {
-      // add the user and driver to the context
-      return { user, driver }
-    }
+    return { user, driver }
   },
   schema: schema
 })
 
-server.init = function(){
+server.init = function () {
   server.listen(process.env.GRAPHQL_LISTEN_PORT, "0.0.0.0").then(({ url }) => {
-    console.log('\x1b[36m%s\x1b[0m',`👍 GraphQL API ready at http://${process.env.VIRTUAL_HOST} 👍`)
+    console.log('\x1b[36m%s\x1b[0m', `👍 GraphQL API ready at http://${process.env.VIRTUAL_HOST} 👍`)
   })
 }
 
- // Export the module
- export default server
+// Export the module
+export default server
