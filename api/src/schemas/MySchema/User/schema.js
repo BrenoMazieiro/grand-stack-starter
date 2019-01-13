@@ -17,6 +17,9 @@ type User {
 type DeletedUser {
   deleted: Boolean
 }
+type LoginUser {
+  token: String
+}
 `
 /* Queries */
 export const UsersByFirstName = `
@@ -90,6 +93,12 @@ export const SoftDeleteUser = `
     )
 `
 
+export const LoginUser = `
+  LoginUser (
+    loginUserInput: loginUserInput
+  ): LoginUser
+`
+
 export const UserInputs = `
 input searchUserInput {
   email: String!
@@ -98,6 +107,11 @@ input searchUserInput {
 input dataUserInput {
   first_name: String!
   last_name: String!
+  password: String!
+}
+
+input loginUserInput {
+  email: String!
   password: String!
 }
 `

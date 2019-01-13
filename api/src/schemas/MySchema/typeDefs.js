@@ -1,6 +1,6 @@
 import { directives } from './Directives'
 import { Phone, CreatePhone, PhoneInputs } from './Phone/schema'
-import { User, UsersByFirstName, CreateUser, UpdateUser, SoftDeleteUser, UserInputs } from './User/schema'
+import { User, UsersByFirstName, CreateUser, UpdateUser, SoftDeleteUser, LoginUser, UserInputs } from './User/schema'
 import { Role } from './Role/schema'
 
 export const typeDefs = `
@@ -18,6 +18,7 @@ type Mutation {
   ${CreatePhone}
   ${CreateUser}
   ${UpdateUser}
+  ${LoginUser}
   ${SoftDeleteUser}
 }
 
