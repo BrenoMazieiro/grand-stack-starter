@@ -39,6 +39,8 @@ export const CreateUser = `
           u.first_name = $updateUserInput.first_name, \
           u.last_name = $updateUserInput.last_name, \
           u.password = $updateUserInput.password \
+        MERGE (r:Role {name: 'SUBSCRIBER'}) \
+        CREATE (u)-[p:PLAYS]->(r) \
         RETURN u"
     )
 `
