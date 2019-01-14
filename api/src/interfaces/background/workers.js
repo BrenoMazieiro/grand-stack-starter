@@ -28,7 +28,7 @@ workers.loop = function(minutes){
 
 // Init script
 workers.init = function(){
-  const minutes = process.env.WORKER_MINUTES || 0.2
+  const minutes = process.env.WORKER_MINUTES || 2
   // Send to console, in yellow
   console.log('\x1b[33m%s\x1b[0m','🤖 Background workers are running 🤖')
 
