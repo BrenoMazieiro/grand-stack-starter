@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2019-01-14T15:55:25.300Z",
+	"__export_date": "2019-01-14T19:20:57.926Z",
 	"__export_source": "insomnia.desktop.app:v6.3.2",
 	"resources": [
 		{
@@ -52,11 +52,12 @@
 			"color": null,
 			"created": 1545658984697,
 			"data": {
-				"api_url": "http://api.local.mycompany.com/"
+				"api_url": "http://api.local.mycompany.com/",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2NTljZjQwLTUxOTQtNDI2OC1iMTQ1LWExNjEwYzA2OTdlYiIsImVtYWlsIjoiYnJlbm8ubWF6aWVpcm9AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6Ikpvc8OpIiwibGFzdF9uYW1lIjoiU2lsdmEiLCJyb2xlIjpbIkFETUlOIl0sImlhdCI6MTU0NzQ5MjQ4OCwiZXhwIjoxNTQ3NjY1Mjg4fQ.NEDSI7v8BNdjYbaZYf0ePLFXaibDUiFPLYxpk7dGElg"
 			},
 			"isPrivate": false,
 			"metaSortKey": 1545658984697,
-			"modified": 1547481147734,
+			"modified": 1547492501821,
 			"name": "Api",
 			"parentId": "env_3237dbd980034b5fadb72f610bb46d22",
 			"_type": "environment"
@@ -67,8 +68,19 @@
 			"description": "",
 			"environment": {},
 			"metaSortKey": -1547481064646,
-			"modified": 1547481064645,
-			"name": "User",
+			"modified": 1547493628239,
+			"name": "Users",
+			"parentId": "fld_6aa8720c5a214844a1386cea6b2ce416",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_fbb3acb81f4d4133a19891f761ff0a3f",
+			"created": 1547492533726,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1546570050956,
+			"modified": 1547493622791,
+			"name": "Movies",
 			"parentId": "fld_6aa8720c5a214844a1386cea6b2ce416",
 			"_type": "request_group"
 		},
@@ -95,6 +107,28 @@
 			"_type": "request_group"
 		},
 		{
+			"_id": "fld_d754f1a8721c45ad89eb668b0c648866",
+			"created": 1547492533727,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1547481080949,
+			"modified": 1547492533727,
+			"name": "mutations",
+			"parentId": "fld_fbb3acb81f4d4133a19891f761ff0a3f",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_5dae4e4b2c1f44f786287a94d74a2be3",
+			"created": 1547492533739,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1547481091477,
+			"modified": 1547492533739,
+			"name": "queries",
+			"parentId": "fld_fbb3acb81f4d4133a19891f761ff0a3f",
+			"_type": "request_group"
+		},
+		{
 			"_id": "req_f5d95e74d4b348bd8b56e7ef49150da4",
 			"authentication": {},
 			"body": {
@@ -113,7 +147,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1547481021367.5,
 			"method": "POST",
-			"modified": 1547481306572,
+			"modified": 1547492506533,
 			"name": "CreateUser",
 			"parameters": [],
 			"parentId": "fld_b477651a59aa463b9b3ca1925b496a06",
@@ -131,7 +165,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/graphql",
-				"text": "{\"query\":\"mutation {\\n  UpdateUser(\\n    searchUserInput: {email: \\\"breno.mazieiro@gmail.com\\\"}\\n    dataUserInput: {\\n      first_name: \\\"José\\\"\\n      last_name: \\\"Silva\\\"\\n      password: \\\"1234\\\"\\n    }\\n  ) {\\n      id\\n      first_name\\n      last_name\\n      email\\n      password\\n      updated {\\n        formatted\\n      }\\n      roles {\\n        name\\n      }\\n    }\\n}\"}"
+				"text": "{\"query\":\"mutation {\\n  UpdateUser(\\n    searchUserInput: {email: \\\"breno.mazieiro@gmail.com\\\"}\\n    dataUserInput: {\\n      first_name: \\\"Breno\\\"\\n      last_name: \\\"Mazieiro\\\"\\n      password: \\\"123456\\\"\\n    }\\n  ) {\\n      id\\n      first_name\\n      last_name\\n      email\\n      password\\n      updated {\\n        formatted\\n      }\\n      roles {\\n        name\\n      }\\n    }\\n}\"}"
 			},
 			"created": 1547480885376,
 			"description": "",
@@ -144,13 +178,13 @@
 				{
 					"id": "pair_e0a9414b26b646c39385139b8611395a",
 					"name": "Authorization",
-					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2NTljZjQwLTUxOTQtNDI2OC1iMTQ1LWExNjEwYzA2OTdlYiIsImVtYWlsIjoiYnJlbm8ubWF6aWVpcm9AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6IkJyZW5vIiwibGFzdF9uYW1lIjoiTWF6aWVpcm8iLCJyb2xlIjpbIlNVQlNDUklCRVIiXSwiaWF0IjoxNTQ3NDYwMjY5LCJleHAiOjE1NDc2MzMwNjl9.dFpHX2_3vz_mAYBYppMQPD0niVpsir4xbrpzD1BGGQw"
+					"value": "{{ token  }}"
 				}
 			],
 			"isPrivate": false,
 			"metaSortKey": -1547481021355,
 			"method": "POST",
-			"modified": 1547481309777,
+			"modified": 1547492524791,
 			"name": "UpdateUser",
 			"parameters": [],
 			"parentId": "fld_b477651a59aa463b9b3ca1925b496a06",
@@ -182,7 +216,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1547481021405,
 			"method": "POST",
-			"modified": 1547481301588,
+			"modified": 1547492501872,
 			"name": "LoginUSer",
 			"parameters": [],
 			"parentId": "fld_b477651a59aa463b9b3ca1925b496a06",
@@ -213,13 +247,13 @@
 				{
 					"id": "pair_e39f115eb38f49d9a3f494cf19470338",
 					"name": "Authorization",
-					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2NTljZjQwLTUxOTQtNDI2OC1iMTQ1LWExNjEwYzA2OTdlYiIsImVtYWlsIjoiYnJlbm8ubWF6aWVpcm9AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6Ikpvc8OpIiwibGFzdF9uYW1lIjoiU2lsdmEiLCJyb2xlIjpbIkFETUlOIl0sImlhdCI6MTU0NzQ2MDU0NiwiZXhwIjoxNTQ3NjMzMzQ2fQ.SVKomGYL4mWsmLbqPSsBq-r-WKtF1rLJaZnz590IZPo"
+					"value": "{{ token  }}"
 				}
 			],
 			"isPrivate": false,
 			"metaSortKey": -1547481021380,
 			"method": "POST",
-			"modified": 1547481302725,
+			"modified": 1547492368882,
 			"name": "SoftDeleteUser",
 			"parameters": [],
 			"parentId": "fld_b477651a59aa463b9b3ca1925b496a06",
@@ -250,16 +284,164 @@
 				{
 					"id": "pair_33a397dceabe4ff2b28788358a7a8b27",
 					"name": "Authorization",
-					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2NTljZjQwLTUxOTQtNDI2OC1iMTQ1LWExNjEwYzA2OTdlYiIsImVtYWlsIjoiYnJlbm8ubWF6aWVpcm9AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6Ikpvc8OpIiwibGFzdF9uYW1lIjoiU2lsdmEiLCJyb2xlIjpbIkFETUlOIl0sImlhdCI6MTU0NzQ2MDU0NiwiZXhwIjoxNTQ3NjMzMzQ2fQ.SVKomGYL4mWsmLbqPSsBq-r-WKtF1rLJaZnz590IZPo"
+					"value": "{{ token  }}"
 				}
 			],
 			"isPrivate": false,
 			"metaSortKey": -1547481021330,
 			"method": "POST",
-			"modified": 1547481295375,
+			"modified": 1547492376873,
 			"name": "UsersByFirstName",
 			"parameters": [],
 			"parentId": "fld_2ee711e2085d4032914638e13206c501",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_url  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_d94b1504ab524b1d90e2bcc933d3425c",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"# Write your query or mutation here\\nmutation {\\n  m1:CreateMovie(\\n    searchMovieInput: {title: \\\"Rush\\\", year: 1991},\\n    dataMovieInput: {\\n      plot: \\\"Two small-town Texas cops go undercover to catch a major drug dealer and are sucked into the drug culture, compromising their assignment.\\\"\\n      poster: \\\"https://m.media-amazon.com/images/M/MV5BMjE4NzQ5NzIxM15BMl5BanBnXkFtZTcwMjI0NzI5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg\\\"\\n      imdbRating: 6.7\\n    }\\n  )\\n  {\\n    id\\n    title\\n    year\\n    plot\\n    poster\\n    imdbRating\\n  }\\n  m2:CreateMovie(\\n    searchMovieInput: {title: \\\"Rush\\\", year: 2013},\\n    dataMovieInput: {\\n      plot: \\\"The merciless 1970s rivalry between Formula One rivals James Hunt and Niki Lauda.\\\"\\n      poster: \\\"https://m.media-amazon.com/images/M/MV5BOWEwODJmZDItYTNmZC00OGM4LThlNDktOTQzZjIzMGQxODA4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg\\\"\\n      imdbRating: 8.1\\n    }\\n  )\\n  {\\n    id\\n    title\\n    year\\n    plot\\n    poster\\n    imdbRating\\n  }\\n}\"}"
+			},
+			"created": 1547492533728,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_01dd9732e29c4828b6c3390e7ddbf895",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_606ee460f0bf4a4193590ce45c0e3dce",
+					"name": "Authorization",
+					"value": "{{ token }}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547481021367.5,
+			"method": "POST",
+			"modified": 1547493247342,
+			"name": "CreateMovie",
+			"parameters": [],
+			"parentId": "fld_d754f1a8721c45ad89eb668b0c648866",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_url  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_04dd0ae791ad407a819a70cb5ca2038b",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation {\\n  UpdateMovie(\\n    searchMovieInput: {title: \\\"Rush\\\", year: 1991},\\n    dataMovieInput: {\\n      plot: \\\"Two small-town Texas cops go undercover to catch a major drug dealer and are sucked into the drug culture, compromising their assignment. UPDATED\\\"\\n      poster: \\\"https://m.media-amazon.com/images/M/MV5BMjE4NzQ5NzIxM15BMl5BanBnXkFtZTcwMjI0NzI5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg\\\"\\n      imdbRating: 9\\n    }\\n  )\\n  {\\n    id\\n    title\\n    year\\n    plot\\n    poster\\n    imdbRating\\n  }\\n}\"}"
+			},
+			"created": 1547492533731,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_a32c1f152b9b4612be69c0666cc1a23f",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_e0a9414b26b646c39385139b8611395a",
+					"name": "Authorization",
+					"value": "{{ token  }}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547481021355,
+			"method": "POST",
+			"modified": 1547493211434,
+			"name": "UpdateMovie",
+			"parameters": [],
+			"parentId": "fld_d754f1a8721c45ad89eb668b0c648866",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_url  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1681c7e3df2d4998b14ef42032068ac7",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation {\\n  SoftDeleteMovie(\\n    searchMovieInput: {title: \\\"Rush\\\", year: 1991},\\n  ) {\\n    deleted\\n  }\\n}\"}"
+			},
+			"created": 1547492533737,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_d27acfe1e0684ae3b7a405581f41d0cb",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_e39f115eb38f49d9a3f494cf19470338",
+					"name": "Authorization",
+					"value": "{{ token  }}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547481021380,
+			"method": "POST",
+			"modified": 1547493388092,
+			"name": "SoftDeleteMovie",
+			"parameters": [],
+			"parentId": "fld_d754f1a8721c45ad89eb668b0c648866",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_url  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6355784eb6884e44870b070e8ef0c041",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n  MoviesByTitle(substring: \\\"R\\\")\\n  {\\n    id\\n    title\\n    year\\n    plot\\n    poster\\n    imdbRating\\n    created {\\n      formatted\\n    }\\n    updated {\\n      formatted\\n    }\\n  }\\n}\"}"
+			},
+			"created": 1547492533740,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_e16fcea634b54c8dbde615115b923f00",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_33a397dceabe4ff2b28788358a7a8b27",
+					"name": "Authorization",
+					"value": "{{ token  }}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547481021330,
+			"method": "POST",
+			"modified": 1547493617508,
+			"name": "MoviesByTitle",
+			"parameters": [],
+			"parentId": "fld_5dae4e4b2c1f44f786287a94d74a2be3",
 			"settingDisableRenderRequestBody": false,
 			"settingEncodeUrl": true,
 			"settingMaxTimelineDataSize": 1000,
