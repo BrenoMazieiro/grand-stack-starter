@@ -11,7 +11,6 @@ type User {
     softDeleted: Boolean
     token: String
     roles: [Role] @relation(name: "IS_A", direction: "OUT")
-    phones: [Phone] @relation(name: "HAS_PHONE", direction: "OUT")
     friends: [User] @relation(name: "FRIENDS", direction: "BOTH")
   }
 type DeletedUser {

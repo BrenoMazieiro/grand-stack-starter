@@ -1,28 +1,31 @@
 import { directives } from './Directives'
-import { Phone, CreatePhone, PhoneInputs } from './Phone/schema'
 import { User, UsersByFirstName, CreateUser, UpdateUser, SoftDeleteUser, LoginUser, UserInputs } from './User/schema'
+import { Movie, MoviesByTitle, CreateMovie, UpdateMovie, SoftDeleteMovie, MovieInputs } from './Movie/schema'
 import { Role } from './Role/schema'
 
 export const typeDefs = `
 ${directives}
 
-${Phone}
 ${User}
 ${Role}
+${Movie}
 
 type Query {
   ${UsersByFirstName}
+  ${MoviesByTitle}
 }
 
 type Mutation {
-  ${CreatePhone}
   ${CreateUser}
   ${UpdateUser}
-  ${LoginUser}
   ${SoftDeleteUser}
+  ${LoginUser}
+  ${CreateMovie}
+  ${UpdateMovie}
+  ${SoftDeleteMovie}
 }
 
-${PhoneInputs}
 ${UserInputs}
+${MovieInputs}
 
 `
