@@ -1,0 +1,273 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2019-01-14T15:55:25.300Z",
+	"__export_source": "insomnia.desktop.app:v6.3.2",
+	"resources": [
+		{
+			"_id": "wrk_cfe310013dd8446d80b682ed68603879",
+			"created": 1545658839031,
+			"description": "",
+			"modified": 1545658839031,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_3237dbd980034b5fadb72f610bb46d22",
+			"color": null,
+			"created": 1545658839056,
+			"data": {
+				"{{ api_url  }}": "api.local.mycompany.com"
+			},
+			"isPrivate": false,
+			"metaSortKey": 1545658839056,
+			"modified": 1545658975872,
+			"name": "New Environment",
+			"parentId": "wrk_cfe310013dd8446d80b682ed68603879",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_62bea79f1b644a9e87b74c05da5d7511",
+			"cookies": [],
+			"created": 1545658839057,
+			"modified": 1545658839057,
+			"name": "Default Jar",
+			"parentId": "wrk_cfe310013dd8446d80b682ed68603879",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_6aa8720c5a214844a1386cea6b2ce416",
+			"created": 1545659037266,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1545659037266,
+			"modified": 1545659037266,
+			"name": "api",
+			"parentId": "wrk_cfe310013dd8446d80b682ed68603879",
+			"_type": "request_group"
+		},
+		{
+			"_id": "env_4b3e49bc83ce4402adc21b9a4f53e56c",
+			"color": null,
+			"created": 1545658984697,
+			"data": {
+				"api_url": "http://api.local.mycompany.com/"
+			},
+			"isPrivate": false,
+			"metaSortKey": 1545658984697,
+			"modified": 1547481147734,
+			"name": "Api",
+			"parentId": "env_3237dbd980034b5fadb72f610bb46d22",
+			"_type": "environment"
+		},
+		{
+			"_id": "fld_00f5ea19edaa426b800657d1b5ea473a",
+			"created": 1547481064645,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1547481064646,
+			"modified": 1547481064645,
+			"name": "User",
+			"parentId": "fld_6aa8720c5a214844a1386cea6b2ce416",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_b477651a59aa463b9b3ca1925b496a06",
+			"created": 1547481080949,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1547481080949,
+			"modified": 1547481080949,
+			"name": "mutations",
+			"parentId": "fld_00f5ea19edaa426b800657d1b5ea473a",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_2ee711e2085d4032914638e13206c501",
+			"created": 1547481091477,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1547481091477,
+			"modified": 1547481091477,
+			"name": "queries",
+			"parentId": "fld_00f5ea19edaa426b800657d1b5ea473a",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_f5d95e74d4b348bd8b56e7ef49150da4",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation {\\n  CreateUser(\\n    searchUserInput: {email: \\\"breno.mazieiro2@gmail.com\\\"}\\n    dataUserInput: {\\n      first_name: \\\"Breno\\\"\\n      last_name: \\\"Mazieiro\\\"\\n      password: \\\"123456\\\"\\n    }\\n  ) {\\n    id\\n    first_name\\n    last_name\\n    email\\n    password\\n    created {\\n      formatted\\n    }\\n  }\\n  \\n}\"}"
+			},
+			"created": 1547480727856,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_01dd9732e29c4828b6c3390e7ddbf895",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547481021367.5,
+			"method": "POST",
+			"modified": 1547481306572,
+			"name": "CreateUser",
+			"parameters": [],
+			"parentId": "fld_b477651a59aa463b9b3ca1925b496a06",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_url  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_4cf40ffe801c4a8faff17bf584b61e96",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation {\\n  UpdateUser(\\n    searchUserInput: {email: \\\"breno.mazieiro@gmail.com\\\"}\\n    dataUserInput: {\\n      first_name: \\\"José\\\"\\n      last_name: \\\"Silva\\\"\\n      password: \\\"1234\\\"\\n    }\\n  ) {\\n      id\\n      first_name\\n      last_name\\n      email\\n      password\\n      updated {\\n        formatted\\n      }\\n      roles {\\n        name\\n      }\\n    }\\n}\"}"
+			},
+			"created": 1547480885376,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_a32c1f152b9b4612be69c0666cc1a23f",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_e0a9414b26b646c39385139b8611395a",
+					"name": "Authorization",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2NTljZjQwLTUxOTQtNDI2OC1iMTQ1LWExNjEwYzA2OTdlYiIsImVtYWlsIjoiYnJlbm8ubWF6aWVpcm9AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6IkJyZW5vIiwibGFzdF9uYW1lIjoiTWF6aWVpcm8iLCJyb2xlIjpbIlNVQlNDUklCRVIiXSwiaWF0IjoxNTQ3NDYwMjY5LCJleHAiOjE1NDc2MzMwNjl9.dFpHX2_3vz_mAYBYppMQPD0niVpsir4xbrpzD1BGGQw"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547481021355,
+			"method": "POST",
+			"modified": 1547481309777,
+			"name": "UpdateUser",
+			"parameters": [],
+			"parentId": "fld_b477651a59aa463b9b3ca1925b496a06",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_url  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_55c1eea0c52946739229f196dfd74eb3",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation {\\n  LoginUser(loginUserInput: {\\n    email: \\\"breno.mazieiro@gmail.com\\\"\\n    password: \\\"1234\\\"\\n  })\\n  {\\n    token\\n  }\\n}\"}"
+			},
+			"created": 1547480950627,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_4ce2ff676e854ddf984d476f5ce9a2a3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547481021405,
+			"method": "POST",
+			"modified": 1547481301588,
+			"name": "LoginUSer",
+			"parameters": [],
+			"parentId": "fld_b477651a59aa463b9b3ca1925b496a06",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_url  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3a70656284d746b59eda6374e19e4ab6",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation {\\n  SoftDeleteUser(searchUserInput: {\\n    email: \\\"breno.mazieiro@gmail.com\\\"    \\n  }) {\\n    deleted\\n  }\\n}\"}"
+			},
+			"created": 1547481021305,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_d27acfe1e0684ae3b7a405581f41d0cb",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_e39f115eb38f49d9a3f494cf19470338",
+					"name": "Authorization",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2NTljZjQwLTUxOTQtNDI2OC1iMTQ1LWExNjEwYzA2OTdlYiIsImVtYWlsIjoiYnJlbm8ubWF6aWVpcm9AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6Ikpvc8OpIiwibGFzdF9uYW1lIjoiU2lsdmEiLCJyb2xlIjpbIkFETUlOIl0sImlhdCI6MTU0NzQ2MDU0NiwiZXhwIjoxNTQ3NjMzMzQ2fQ.SVKomGYL4mWsmLbqPSsBq-r-WKtF1rLJaZnz590IZPo"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547481021380,
+			"method": "POST",
+			"modified": 1547481302725,
+			"name": "SoftDeleteUser",
+			"parameters": [],
+			"parentId": "fld_b477651a59aa463b9b3ca1925b496a06",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_url  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c2879eedfbd742259f04b3e4ad729d82",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n  UsersByFirstName(substring: \\\"J\\\")\\n  {\\n    id\\n    first_name\\n    last_name\\n    email\\n    created {\\n      formatted\\n    }\\n    updated {\\n      formatted\\n    }\\n    roles {\\n      name\\n    }\\n  }\\n}\"}"
+			},
+			"created": 1547480768408,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_e16fcea634b54c8dbde615115b923f00",
+					"name": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_33a397dceabe4ff2b28788358a7a8b27",
+					"name": "Authorization",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2NTljZjQwLTUxOTQtNDI2OC1iMTQ1LWExNjEwYzA2OTdlYiIsImVtYWlsIjoiYnJlbm8ubWF6aWVpcm9AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6Ikpvc8OpIiwibGFzdF9uYW1lIjoiU2lsdmEiLCJyb2xlIjpbIkFETUlOIl0sImlhdCI6MTU0NzQ2MDU0NiwiZXhwIjoxNTQ3NjMzMzQ2fQ.SVKomGYL4mWsmLbqPSsBq-r-WKtF1rLJaZnz590IZPo"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1547481021330,
+			"method": "POST",
+			"modified": 1547481295375,
+			"name": "UsersByFirstName",
+			"parameters": [],
+			"parentId": "fld_2ee711e2085d4032914638e13206c501",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ api_url  }}",
+			"_type": "request"
+		}
+	]
+}
