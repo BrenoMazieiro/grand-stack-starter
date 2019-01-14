@@ -7,6 +7,8 @@ type Movie {
   plot: String
   poster: String
   imdbRating: Float
+  created: Date
+  updated: Date
   softDeleted: Boolean
   genres: [String]
   similar(first: Int=3, offset:Int=0): [Movie]
@@ -87,7 +89,7 @@ export const SoftDeleteMovie = `
   ): DeletedMovie
     @cypher(
       statement: 
-        "MATCH (m:Movie {email: $searchMovieInput.email}) \
+        "MATCH (m:Movie {title: $searchMovieInput.title, year: $searchMovieInput.year}) \
         SET m.softDeleted = true \
         RETURN {deleted: true}"
     )
