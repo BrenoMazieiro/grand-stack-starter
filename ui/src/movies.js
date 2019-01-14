@@ -50,7 +50,7 @@ const Users = () => {
   } else {
     return (
       <ul>
-        there is no user yet!
+        there is no movie yet!
       </ul>
   );
   }
