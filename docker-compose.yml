@@ -50,6 +50,8 @@ services:
       GRAPHQL_LISTEN_PORT: 80
       GRAPHQL_URI: 'http://api.local.mycompany.com/'
       JWT_SECRET: 'mysupersecretjwt'
+      ADMIN_EMAIL: 'admin@mycompany.com'
+      ADMIN_PASSWORD: 'itssecret'
       TOKEN_EXPIRE_IN: '48h'
       APP_ENV: 'development'
       NODE_ENV: 'development'
