@@ -3,7 +3,9 @@ import React from 'react';
 import { useQuery } from 'react-apollo-hooks';
 
 let movieTitle = 'R'
-
+const styleCard = {
+  width: '18rem'
+};
 const GET_MOVIES = gql`
 {
   MoviesByTitle(substring: "${movieTitle}")
@@ -27,33 +29,31 @@ const GET_MOVIES = gql`
 const Users = () => {
   const { data, error } = useQuery(GET_MOVIES);
   if (error) return `Error! ${error.message}`;
-  
-  if(data.MoviesByTitle.length > 0) {
+
+  if (data.MoviesByTitle.length > 0) {
     return (
-      <div>
-        <ul>
+      <div class="card-columns">
           {
             data.MoviesByTitle.map(movie => (
-              <div key={movie.id}>
-                <li>Id: {movie.id} </li>
-                <li>Title: {movie.title} </li>
-                <li>Year: {movie.year} </li>
-                <li>Plot: {movie.plot} </li>
-                <li>Poster: <img src={movie.poster} alt=""></img> </li>
-                <li>ImdbRating: {movie.imdbRating} </li>
+              <div class="card" style={styleCard} key={movie.id}>
+                <img src={movie.poster} class="card-img-top" alt="..."></img>
+                  <div class="card-body">
+                    <h5 class="card-title">{movie.title} ({movie.year}) - {movie.imdbRating} </h5>
+                    <p class="card-text">{movie.plot}</p>
+                    <a href="/" class="btn btn-primary">Go somewhere</a>
+                  </div>
               </div>
-            ))
-          }
-        </ul>
+                ))
+              }
       </div>
-    );
+        );
   } else {
     return (
       <ul>
-        there is no movie yet!
+        There is no Movie Yet, maybe if you create some it will be here!
       </ul>
-  );
-  }
-};
-
+          );
+          }
+        };
+        
 export default Users;
