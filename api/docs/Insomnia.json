@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2019-01-14T19:20:57.926Z",
+	"__export_date": "2019-01-15T00:54:23.952Z",
 	"__export_source": "insomnia.desktop.app:v6.3.2",
 	"resources": [
 		{
@@ -53,11 +53,11 @@
 			"created": 1545658984697,
 			"data": {
 				"api_url": "http://api.local.mycompany.com/",
-				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2NTljZjQwLTUxOTQtNDI2OC1iMTQ1LWExNjEwYzA2OTdlYiIsImVtYWlsIjoiYnJlbm8ubWF6aWVpcm9AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6Ikpvc8OpIiwibGFzdF9uYW1lIjoiU2lsdmEiLCJyb2xlIjpbIkFETUlOIl0sImlhdCI6MTU0NzQ5MjQ4OCwiZXhwIjoxNTQ3NjY1Mjg4fQ.NEDSI7v8BNdjYbaZYf0ePLFXaibDUiFPLYxpk7dGElg"
+				"token": "{% response 'body', 'req_55c1eea0c52946739229f196dfd74eb3', '$.data.LoginUser.token' %}"
 			},
 			"isPrivate": false,
 			"metaSortKey": 1545658984697,
-			"modified": 1547492501821,
+			"modified": 1547513564389,
 			"name": "Api",
 			"parentId": "env_3237dbd980034b5fadb72f610bb46d22",
 			"_type": "environment"
@@ -202,7 +202,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/graphql",
-				"text": "{\"query\":\"mutation {\\n  LoginUser(loginUserInput: {\\n    email: \\\"breno.mazieiro@gmail.com\\\"\\n    password: \\\"1234\\\"\\n  })\\n  {\\n    token\\n  }\\n}\"}"
+				"text": "{\"query\":\"# This user was created using seedDb\\nmutation {\\n  LoginUser(loginUserInput: {\\n    email: \\\"admin@mycompany.com\\\"\\n    password: \\\"itssecret\\\"\\n  })\\n  {\\n    token\\n  }\\n}\"}"
 			},
 			"created": 1547480950627,
 			"description": "",
@@ -216,7 +216,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1547481021405,
 			"method": "POST",
-			"modified": 1547492501872,
+			"modified": 1547513617999,
 			"name": "LoginUSer",
 			"parameters": [],
 			"parentId": "fld_b477651a59aa463b9b3ca1925b496a06",
@@ -253,7 +253,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1547481021380,
 			"method": "POST",
-			"modified": 1547492368882,
+			"modified": 1547513461062,
 			"name": "SoftDeleteUser",
 			"parameters": [],
 			"parentId": "fld_b477651a59aa463b9b3ca1925b496a06",
@@ -327,7 +327,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1547481021367.5,
 			"method": "POST",
-			"modified": 1547493247342,
+			"modified": 1547513573976,
 			"name": "CreateMovie",
 			"parameters": [],
 			"parentId": "fld_d754f1a8721c45ad89eb668b0c648866",
@@ -438,7 +438,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1547481021330,
 			"method": "POST",
-			"modified": 1547493617508,
+			"modified": 1547510066190,
 			"name": "MoviesByTitle",
 			"parameters": [],
 			"parentId": "fld_5dae4e4b2c1f44f786287a94d74a2be3",
