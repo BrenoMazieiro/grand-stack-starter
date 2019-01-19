@@ -6,8 +6,8 @@ export default async (obj, params, ctx, resolveInfo) => {
     params.loginUserInput.password = crypto.createHmac('sha256', process.env.JWT_SECRET).update(params.loginUserInput.password).digest('hex')
 
     const session = ctx.driver.session();
-    const query = "MATCH (u:User {email: $loginUserInput.email, password: $loginUserInput.password, softDeleted: false})-[p:PLAYS]->(r:Role) RETURN u,p,r"
-    return session.run(query, params)
+    const cypher = "MATCH (u:User {email: $loginUserInput.email, password: $loginUserInput.password, softDeleted: false})-[p:PLAYS]->(r:Role) RETURN u,p,r"
+    return session.run(cypher, params)
         .then( result => {
             if(result.records.length > 0) {
                 const user = {

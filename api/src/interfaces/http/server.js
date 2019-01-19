@@ -22,10 +22,10 @@ const server = new ApolloServer({
       try {
         decoded = jwt.verify(token, process.env.JWT_SECRET)
       } catch(e) {
-        throw new ApolloError('invalid_token', 401, ['User or password is incorrect']);
+        throw new ApolloError('invalid_token', 401, ['Token is not valid!']);
       }
       if (!decoded.id) {
-        throw new ApolloError('invalid_token', 401, ['User or password is incorrect']);
+        throw new ApolloError('invalid_token', 401, ['Token is not valid!']);
       } else {
         user = decoded
       }
