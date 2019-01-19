@@ -1,5 +1,5 @@
 import { directives } from './Directives'
-import { User, UsersByFirstName, CreateUser, UpdateUser, SoftDeleteUser, LoginUser, UserInputs } from './User/schema'
+import { User, UsersByFirstName, Myself, CreateUser, UpdateUser, SoftDeleteUser, LoginUser, UserInputs } from './User/schema'
 import { Movie, MoviesByTitle, CreateMovie, UpdateMovie, SoftDeleteMovie, MovieInputs } from './Movie/schema'
 import { Role } from './Role/schema'
 
@@ -12,6 +12,7 @@ ${Movie}
 
 type Query {
   ${UsersByFirstName}
+  ${Myself}
   ${MoviesByTitle}
 }
 

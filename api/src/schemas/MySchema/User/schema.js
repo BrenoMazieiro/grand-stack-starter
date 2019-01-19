@@ -27,7 +27,12 @@ export const UsersByFirstName = `
       statement: "MATCH (u:User) WHERE u.first_name CONTAINS $substring and u.softDeleted=false RETURN u"
     )
 `
-
+export const Myself = `
+  Myself(searchUserInput: searchUserInput) : User
+  @cypher(
+    statement: "Match (u:User {email: $searchUserInput.email}) return u"
+  )
+`
 /* Mutations */
 export const CreateUser = `
   CreateUser (

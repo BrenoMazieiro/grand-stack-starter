@@ -8,7 +8,7 @@ export default async (obj, params, ctx, resolveInfo) => {
     `MATCH (u:User {email: "${params.searchUserInput.email}"}) return u`
   )
   if (findUser.records.length > 0) {
-    throw new ApolloError('user_already_exists', 200, 'This user already exists');
+    throw new ApolloError('user_already_exists', 200, ['This user already exists']);
   } else {
     return neo4jgraphql(obj, params, ctx, resolveInfo, true)
   }
