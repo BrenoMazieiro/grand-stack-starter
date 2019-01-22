@@ -6,7 +6,6 @@
     "start": "npm run dev",
     "env:dev": "cross-env NODE_ENV=development",
     "env:prod": "cross-env NODE_ENV=production",
-    "env:example": "cross-env SOURCE=src-example",
     "test": "jest",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
@@ -14,17 +13,14 @@
     "storybook": "start-storybook -p 9001 -c private/storybook",
     "storybook:example": "npm run env:example -- npm run storybook",
     "dev": "npm run env:dev -- webpack-dev-server",
-    "dev:example": "npm run env:example -- npm run dev",
     "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
     "build:copy": "copyfiles -u 1 public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
-    "build": "npm run env:prod -- webpack",
-    "build:example": "npm run env:example -- npm run build"
+    "build": "npm run env:prod -- webpack"
   },
   "jest": {
     "moduleDirectories": [
       "src",
-      "src-example",
       "node_modules"
     ],
     "moduleNameMapper": {
