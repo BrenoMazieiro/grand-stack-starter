@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Using CSS Grid</title>
+    <style>
+        body {
+            background: #fff;
+            color: #fff;
+            font-family: 'Nunito Semibold';
+            text-align: center;
+        }
+
+        #content {
+            display: grid;
+            grid-template-columns: 1fr;
+            min-width: 300px;
+            grid-template-areas:
+                "nav"
+                "main"
+                "hero"
+                "footer";
+        }
+
+        /* desktop grid */
+        @media screen and (min-width: 860px) {
+            #content {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-areas:
+                    "nav nav nav nav nav nav nav nav nav nav nav nav "
+                    "hero hero hero hero hero hero hero hero hero hero hero hero "
+                    "main main main main main main main main main main main main"
+                    "footer footer footer footer footer footer footer footer footer footer footer footer";
+            }
+        }
+        nav {
+            grid-area: nav;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-areas: "icon . . . . . . . . register register .";
+            background: #212121;
+            height: 50px;
+        }
+        icon {
+        grid-area: icon;
+        padding: 10px;
+        text-align: start;
+        }
+        menu {
+            display: none;
+        }
+        search {
+            display: none;
+        }
+        register {
+            grid-area: register;
+            padding: 10px;
+            text-align: end;
+        }
+        signIn {
+            padding: 10px;
+        }
+        signUp {
+            padding: 10px;
+        }
+
+        @media screen and (min-width: 860px) {
+            nav {
+                grid-area: nav;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-areas: "icon menu menu menu menu search search search search . register register";
+                background: #212121;
+                height: 50px;
+            }
+            icon {
+            grid-area: icon;
+            padding: 10px;
+            text-align: start;
+            justify-self: end;
+            }
+            menu {
+                grid-area: menu;
+                justify-self: start;
+                display: block;
+            }
+            search {
+                grid-area: search;
+                display: grid;
+                padding: 10px;
+                text-align: center;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-areas: "sinput sinput sinput sbutton";
+            }
+            search > input {
+                grid-area: sinput;
+                width: auto;
+            }
+            searchButton{
+                grid-area: sbutton;
+            }
+            register {
+                grid-area: register;
+                padding: 10px;
+                text-align: end;
+            }
+            signIn {
+                padding: 10px;
+            }
+            signUp {
+                padding: 10px;
+            }
+        }
+
+        hero {
+            display: none;
+        }
+
+        heroImage {
+            display: none;
+        }
+
+        heroDescription {
+            display: none;
+        }
+
+        @media screen and (min-width: 860px) {
+            hero {
+                display: grid;
+                grid-area: hero;
+                background: #212121;
+                height: 400px;
+                grid-gap: 10px;
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-areas:
+                    "heroImage heroImage heroDescription heroDescription heroDescription .";
+            }
+
+            heroImage {
+                grid-area: heroImage;
+                display: block;
+                padding: 20px
+            }
+
+            heroDescription {
+                font-size: 25px;
+                grid-area: heroDescription;
+                display: block;
+                padding: 20px;
+            }
+        }
+
+        main {
+            grid-area: main;
+            display: grid;
+            margin: 0px;
+            padding: 0px;
+            align-content: start;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas:
+                "filter filter"
+                "movies movies";
+
+        }
+
+        filter {
+            grid-area: filter;
+            height: 40px;
+            background: #ccc !important;
+        }
+
+        movies {
+            grid-area: movies;
+            padding: 10px;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(1, 2fr);
+            background: #000 !important;
+            align-self: center;
+        }
+
+        @media screen and (min-width: 640px) {
+            movies {
+                grid-area: movies;
+                padding: 10px;
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: repeat(2, 2fr);
+                background: #000 !important;
+                align-self: center;
+            }
+        }
+
+        @media screen and (min-width: 960px) {
+            movies {
+                grid-area: movies;
+                padding: 10px;
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: repeat(3, 2fr);
+                background: #000 !important;
+                align-self: center;
+            }
+        }
+
+        @media screen and (min-width: 1300px) {
+            movies {
+                grid-area: movies;
+                padding: 10px;
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: repeat(4, 2fr);
+                background: #000 !important;
+                align-self: center;
+            }
+        }
+
+        @media screen and (min-width: 1600px) {
+            movies {
+                grid-area: movies;
+                padding: 10px;
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: repeat(5, 2fr);
+                background: #000 !important;
+                align-self: center;
+            }
+        }
+
+        movie {
+            width: 20px;
+            background: #777;
+            width: 300px;
+            height: 400px;
+            justify-self: center;
+        }
+
+        footer {
+            grid-area: footer;
+            background: #212121
+        }
+        footer > p {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <nav>
+            <icon>
+                Some icon
+            </icon>
+            <menu>
+                <link>
+                <a href='/'>Home</a>
+                </link>
+                <link>
+                <a href='/admin'>Admin</a>
+                </link>
+                <link>
+                <a href='/another'>Another</a>
+                </link>
+            </menu>
+            <search>
+                <input type="text" placeholder="Search" />
+                <searchButton>Search</searchButton>
+            </search>
+            <register>
+                <SignIn>
+                    <a href='/signin'>SignIn</a>
+                </SignIn>
+                <SignUp>
+                    <a href='/signup'>SignUp</a>
+                </SignUp>
+            </register>
+        </nav>
+        <hero>
+            <heroimage>Some Image</heroimage>
+            <heroDescription>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent semper iaculis pellentesque. Nunc
+                convallis nunc ut quam semper aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent fringilla arcu vitae pellentesque tincidunt. Sed pellentesque tristique finibus. Ut et
+                interdum est, vitae ullamcorper nunc. Nullam ut nibh condimentum, viverra dui eu, elementum neque.
+            </heroDescription>
+        </hero>
+        <main>
+            <filter>Filter</filter>
+            <movies>
+                <movie>
+                    1
+                </movie>
+                <movie>
+                    2
+                </movie>
+                <movie>
+                    3
+                </movie>
+                <movie>
+                    4
+                </movie>
+                <movie>
+                    5
+                </movie>
+                <movie>
+                    6
+                </movie>
+                <movie>
+                    7
+                </movie>
+                <movie>
+                    8
+                </movie>
+                <movie>
+                    9
+                </movie>
+                <movie>
+                    10
+                </movie>
+                <movie>
+                    11
+                </movie>
+                <movie>
+                    12
+                </movie>
+            </movies>
+        </main>
+        <footer>
+            <p>
+                by Breno Mazieiro<br />
+                \o/<br />
+                Aliquam nunc enim, iaculis a ultricies ut, blandit vitae lacus. Duis nec molestie enim, at convallis
+                mauris. Proin vel enim sit amet turpis condimentum euismod non sed orci. Mauris mollis fermentum justo
+                eget viverra. Aenean pulvinar luctus nisi, eget eleifend elit tincidunt vel. Integer ut euismod velit.
+                Aliquam vehicula ac lorem sed rhoncus. Cras non enim pulvinar, tempus mauris nec, suscipit sapien.
+                Phasellus volutpat lectus nisi, condimentum fermentum urna molestie aliquet. Donec eleifend metus
+                fringilla, luctus augue id, convallis leo.
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>

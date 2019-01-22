@@ -82,6 +82,31 @@ services:
       main:
         aliases:
           - ui.local.mycompany.com
+  
+  uiatomic.local.mycompany.com:
+    image: registry-mycompany-nodejs
+    container_name: uiatomic.local.mycompany.com
+    volumes:
+      - "./ui_atomic:/opt/app-root/src:rw"
+    ports:
+      - 80
+    environment:
+      #General
+      APP_ENV: 'development'
+      NODE_ENV: 'development'
+      # Proxy
+      VIRTUAL_HOST: 'uiatomic.local.mycompany.com'
+      VIRTUAL_PORT: 80
+      #WebPack
+      HOST: 'uiatomic.local.mycompany.com'
+      PORT: 80
+      # UI confs
+      API_URL: 'api.local.mycompany.com'
+    command: ['./wait-for-it.sh', '-t', '0', 'api.local.mycompany.com:80', '--', '.s2i/bin/assemble']
+    networks:
+      main:
+        aliases:
+          - uiatomic.local.mycompany.com
 
 networks:
   main:
