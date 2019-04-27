@@ -49,7 +49,6 @@ export const CreateMovie = `
         m.plot = $dataMovieInput.plot, \
         m.poster = $dataMovieInput.poster, \
         m.imdbRating = $dataMovieInput.imdbRating, \
-        m.password = $dataMovieInput.password, \
         m.updated = datetime() \
       RETURN m"
     )
@@ -78,7 +77,6 @@ export const UpdateMovie = `
         m.plot = $dataMovieInput.plot, \
         m.poster = $dataMovieInput.poster, \
         m.imdbRating = $dataMovieInput.imdbRating, \
-        m.password = $dataMovieInput.password, \
         m.updated = datetime() \
       RETURN m"
     )
