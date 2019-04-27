@@ -15,9 +15,4 @@ export const schema = makeAugmentedSchema({
   typeDefs,
   resolvers,
   schemaDirectives,
-  /** turning auto-creation off */
-  config: {
-    query: false, 
-    mutation: false
-  }
 })
