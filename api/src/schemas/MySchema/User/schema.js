@@ -1,21 +1,22 @@
 /* Definition */
 export const User = `
 type User {
-    id: String
-    first_name: String!
-    last_name: String!
-    email: String!
-    password: String! @hideTheField
-    created: Date
-    updated: Date
-    softDeleted: Boolean
-    token: String
-    roles: [Role] @relation(name: "IS_A", direction: "OUT")
-    friends: [User] @relation(name: "FRIENDS", direction: "BOTH")
-  }
+  id: String
+  first_name: String!
+  last_name: String!
+  email: String!
+  password: String! @hideTheField
+  created: Date
+  updated: Date
+  softDeleted: Boolean
+  roles: [Role] @relation(name: "PLAYS", direction: "OUT")
+  friends: [User] @relation(name: "FRIENDS", direction: "BOTH")
+}
+
 type DeletedUser {
   deleted: Boolean
 }
+
 type LoginUser {
   token: String
 }
