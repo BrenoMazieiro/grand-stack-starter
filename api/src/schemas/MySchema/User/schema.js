@@ -29,9 +29,9 @@ export const UsersByFirstName = `
     )
 `
 export const Myself = `
-  Myself(searchUserInput: searchUserInput) : User
+  Myself : User
   @cypher(
-    statement: "Match (u:User {email: $searchUserInput.email}) return u"
+    statement: "Match (u:User {email: $email}) return u"
   )
 `
 /* Mutations */
