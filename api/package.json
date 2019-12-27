@@ -1,7 +1,7 @@
 {
   "name": "grand-stack-starter-api",
   "version": "0.0.1",
-  "description": "API app for GRANDstack",
+  "description": "FORK - API app for GRANDstack",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,26 +9,27 @@
     "start-dev": "./node_modules/.bin/nodemon -e js,graphql --inspect=9229 --exec babel-node .",
     "seedDb": "./node_modules/.bin/babel-node src/seed/seed-db.js"
   },
-  "author": "William Lyon",
+  "author": "William Lyon, Breno Mazieiro",
   "license": "MIT",
   "dependencies": {
-    "apollo-boost": "^0.3.1",
-    "apollo-cache-inmemory": "^1.5.1",
-    "apollo-client": "^2.5.1",
-    "apollo-link-http": "^1.5.14",
-    "apollo-server": "^2.4.8",
+    "apollo-boost": "^0.4.7",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link-http": "^1.5.16",
+    "apollo-server": "^2.9.15",
     "graphql-tag": "^2.10.1",
     "jsonwebtoken": "^8.5.1",
-    "neo4j-driver": "^1.7.3",
-    "neo4j-graphql-js": "^2.5.0",
-    "node-fetch": "^2.3.0"
+    "moment": "^2.24.0",
+    "neo4j-driver": "^4.0.1",
+    "neo4j-graphql-js": "^2.11.1",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "husky": "^2.1.0",
-    "lint-staged": "^8.1.5",
-    "nodemon": "^1.18.11"
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "nodemon": "^2.0.2"
   },
   "husky": {
     "hooks": {
