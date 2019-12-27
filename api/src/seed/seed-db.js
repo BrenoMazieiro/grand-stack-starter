@@ -1,6 +1,5 @@
 import {driver} from '../infra/databases/database'
 import crypto from 'crypto'
-console.log(process.env.HASH_SECRET)
 const adminEmail = process.env.ADMIN_EMAIL
 const adminPassw = crypto.createHmac('sha256', process.env.HASH_SECRET).update(process.env.ADMIN_PASSWORD).digest('hex')
 

@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import React from 'react';
 import { useQuery } from 'react-apollo-hooks';
 
-let movieTitle = 'R'
+let movieTitle = 'a'
 const styleCard = {
   width: '18rem'
 };
@@ -27,7 +27,8 @@ const GET_MOVIES = gql`
 `;
 
 const Users = () => {
-  const { data, error } = useQuery(GET_MOVIES);
+  const { data, loading, error } = useQuery(GET_MOVIES);
+  if (loading) return 'Loading';
   if (error) return `Error! ${error.message}`;
 
   if (data.MoviesByTitle.length > 0) {
