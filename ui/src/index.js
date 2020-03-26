@@ -1,18 +1,18 @@
-import React, { Suspense } from 'react';
-import { render } from 'react-dom';
+import React, { Suspense } from "react";
+import { render } from "react-dom";
 import ApolloClient from "apollo-boost";
-import { ApolloProvider } from 'react-apollo';
-import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
-import Movies from './movies'
-import { API } from './config'
+import { ApolloProvider } from "react-apollo";
+import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
+import Movies from "./movies";
+import { API } from "./config";
 
-// const token = localStorage.getItem('token'); 
-const token = false
+// const token = localStorage.getItem('token');
+const token = false;
 const client = new ApolloClient({
   uri: API,
   headers: {
-          authorization: token ? token : "",
-        }
+    authorization: token ? token : ""
+  }
 });
 
 const App = () => (
@@ -21,8 +21,8 @@ const App = () => (
       <Suspense fallback={<div>Loading...</div>}>
         <Movies />
       </Suspense>
-   </ApolloHooksProvider>
+    </ApolloHooksProvider>
   </ApolloProvider>
 );
 
-render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById("root"));

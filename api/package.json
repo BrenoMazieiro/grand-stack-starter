@@ -16,19 +16,19 @@
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
     "apollo-link-http": "^1.5.16",
-    "apollo-server": "^2.9.15",
-    "graphql-tag": "^2.10.1",
+    "apollo-server": "^2.1.00",
+    "graphql-tag": "^2.10.3",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
-    "neo4j-driver": "^4.0.1",
-    "neo4j-graphql-js": "^2.11.1",
+    "neo4j-driver": "^4.0.2",
+    "neo4j-graphql-js": "^2.13.0",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "husky": "^3.1.0",
-    "lint-staged": "^9.5.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.9",
     "nodemon": "^2.0.2"
   },
   "husky": {
